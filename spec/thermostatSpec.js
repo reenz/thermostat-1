@@ -28,5 +28,25 @@ describe('Thermostat',function(){
     }
     expect(thermostat.getTemperature()).toEqual(10);
   });
+
+  describe('when power saving on',function(){
+    it('has a maximum of 25 degrees', function() {
+      thermostat.turnPowerSavingOn();
+      for (var i = 0; i < 6; i++) {
+        thermostat.turnUp();
+      }
+      expect(thermostat.getTemperature()).toEqual(25);
+    });
+  });
+
+  describe('when power saving off',function(){
+    it('has a maximum of 32 degrees', function() {
+      thermostat.turnPowerSavingOff();
+      for (var i = 0; i < 13; i++) {
+        thermostat.turnUp();
+      }
+      expect(thermostat.getTemperature()).toEqual(32);
+    });
+  });
  
 });
