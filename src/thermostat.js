@@ -13,4 +13,9 @@ turnUp: function () {
   this.temperature += 1
 },
 
+turnDown: function () {
+  if (this.isMinimum()) { return }
+  this.temperature -= 1
+},
+
 }
