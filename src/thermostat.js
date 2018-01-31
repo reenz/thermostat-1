@@ -21,23 +21,24 @@ Thermostat.prototype = {
     this.temperature -= 1
   },
 
-  isMinimum: function () { 
-    return this.temperature === this.MIN_TEMP 
+  isMinimum: function () {
+    return this.temperature === this.MIN_TEMP
   },
   isMaximum: function () {
-    if (this.powerSaving === true) {
+    if (this.isPowerSavingOn() === true) {
       return this.temperature === this.MAX_TEMP_PS;
     }
     return this.temperature === this.MAX_TEMP_NO_PS;
   },
 
+  isPowerSavingOn: function () { return this.powerSaving },
   turnPowerSavingOn: function () { this.powerSaving = true },
   turnPowerSavingOff: function () { this.powerSaving = false },
 
   resetTemp: function () { this.temperature = this.DEFAULT_TEMP },
 
   energyUsage: function () {
-    temp = this.getTemperature()
+    var temp = this.getTemperature()
     switch (true) {
       case temp < 18:
         return 'low-usage';
