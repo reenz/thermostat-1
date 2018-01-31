@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 function Thermostat() {
   this.DEFAULT_TEMP = 20;
@@ -35,5 +35,17 @@ Thermostat.prototype = {
   turnPowerSavingOff: function () { this.powerSaving = false },
 
   resetTemp: function () { this.temperature = this.DEFAULT_TEMP },
+
+  energyUsage: function () {
+    temp = this.getTemperature()
+    switch (true) {
+      case temp < 18:
+        return 'low-usage';
+      case temp < 25:
+        return 'medium-usage';
+      case temp >= 25:
+        return 'high-usage';
+    }
+  }
 
 }

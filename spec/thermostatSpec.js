@@ -56,5 +56,30 @@ describe('Thermostat',function(){
     thermostat.resetTemp();
     expect(thermostat.getTemperature()).toEqual(20);
   });
+
+  describe('when temp < 18',function(){
+    it('returns "low-usage"',function(){
+      for (var i = 0; i < 5; i++) {
+        thermostat.turnDown();
+      }
+      expect(thermostat.energyUsage()).toEqual('low-usage')
+    });
+  });
+ 
+  describe('when 18 < temp < 25',function(){
+    it('returns "medium-usage"',function(){
+      expect(thermostat.energyUsage()).toEqual('medium-usage')
+    });
+  });
+  
+  describe('when temp > 25',function(){
+    it('returns "high-usage"',function(){
+      thermostat.turnPowerSavingOff();
+      for (var i = 0; i < 11; i++) {
+        thermostat.turnUp();
+      }
+      expect(thermostat.energyUsage()).toEqual('high-usage')
+    });
+  });
  
 });
