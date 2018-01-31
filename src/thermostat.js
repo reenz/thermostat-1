@@ -34,4 +34,6 @@ Thermostat.prototype = {
   turnPowerSavingOn: function () { this.powerSaving = true },
   turnPowerSavingOff: function () { this.powerSaving = false },
 
+  resetTemp: function () { this.temperature = this.DEFAULT_TEMP },
+
 }
