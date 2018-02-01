@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     function updateTemp(){
       $("#current-temp").text(thermostat.getTemperature());
+        $("#current-temp").attr('class',thermostat.energyUsage());
       if(thermostat.isMaximum()) {
         $("#temperature-up").prop("disabled", true);
       } else {
