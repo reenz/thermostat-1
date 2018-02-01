@@ -8,16 +8,21 @@
   color: red;
 }
 
+#body {
+    background: url("https://s.aolcdn.com/dims-global/dims/GLOB/5/640/600/90/https://s.aolcdn.com/os/ukmedia/weather/images/backgrounds/partly-cloudy.jpg") no-repeat center fixed;
+    background-size: cover;
+}
+
 #main {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 20px auto;
-  padding: 50px;
-  background-color: #aac8f7;
+  padding: 110px;
+  /* background-color: #aac8f7; */
   font-family:sans-serif;
 }
 
 .control-buttons {
-    background-color: #008CBA; /* Green */
+    background-color: #0BBBA1;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -25,9 +30,10 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+
 }
 
 .control-buttons:hover {
     background-color: white;
-    color: black;  
+    color: black;
 }

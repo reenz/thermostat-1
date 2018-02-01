@@ -2,6 +2,23 @@ $(document).ready(function () {
 
   thermostat = new Thermostat()
 
+  setInterval(currentTime, 1000);
+
+  function currentTime() {
+    $.get("http://localhost:4567/now", function(resp) {
+      $("#time-span").text(resp)
+    });
+  };
+
+  $.get("http://localhost:4567/temperature", function(resp) {
+    console.log("Response on page start: " + resp);
+    if (resp === "") {
+      $("#current-temp").text(thermostat.getTemperature())
+    } else {
+      $("#current-temp").text(resp)
+    }
+  })
+
   // get user location
   $("#user-location").submit(function(event){
     event.preventDefault();
@@ -19,14 +36,16 @@ $(document).ready(function () {
     $("#current-location").text(city);
   };
 
-  function updateTemp(){
+  function updateTemp() {
     $("#current-temp").text(thermostat.getTemperature());
-      $("#current-temp").attr('class',thermostat.energyUsage());
+    $("#current-temp").attr('class', thermostat.energyUsage());
+
     if(thermostat.isMaximum()) {
       $("#temperature-up").prop("disabled", true);
     } else {
       $("#temperature-up").prop("disabled", false);
     }
+
     if(thermostat.isMinimum()) {
       $("#temperature-down").prop("disabled", true);
     } else {
@@ -37,11 +56,14 @@ $(document).ready(function () {
   $("#temperature-up").click(function (event) {
     thermostat.turnUp();
     updateTemp();
+    console.log("calling post")
+    $.post("http://localhost:4567/temperature", {"current_temp":thermostat.getTemperature()})
   });
 
   $("#temperature-down").click(function (event) {
     thermostat.turnDown();
     updateTemp();
+    $.post("http://localhost:4567/temperature", {"current_temp":thermostat.getTemperature()})
   });
 
   $("#temperature-reset").click(function (event) {

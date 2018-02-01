@@ -6,10 +6,11 @@
    <title >Thermostat</title>
 </head>
 
-<body>
+<body id='body'>
+  <p>Time now <span id="time-span"></span></p>
   <div id='main'>
   <section id="outside-weather-section">
-    <p>Current location:
+    <p>Enter location:
         <form id="user-location">
         <input type="text" id="city" placeholder="Enter a city">
         <input type="submit" value="Submit">
@@ -19,16 +20,17 @@
   </section>
   <section id='inside-temp-section'>
     <h1 id="temperature"></h1>
-    <p>The current indoor temperature is <span id="current-temp">20</span> degrees</p>
+    <p>The current indoor temperature is <span id="current-temp"></span> degrees</p>
     <p>
       <section>
       <button class='control-buttons' id="temperature-up">+</button>
       <button class='control-buttons' id="temperature-down">-</button>
       <button class='control-buttons' id="temperature-reset">reset</button>
-    </section>
-    <section>
+    </section><br>
       Power saving mode is
-      <span id="power-saving-status">on</span>
+      <span id="power-saving-status">on</span><br>
+      <br>
+      <section>
       <button class='control-buttons' id="powersaving-on">PSM on</button>
       <button class='control-buttons' id="powersaving-off">PSM off</button>
     </section>
