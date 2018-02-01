@@ -8,8 +8,17 @@
 
 <body>
   <section>
+    <p>Current location: 
+        <form id="user-location">
+        <input type="text" id="city" placeholder="Enter a city">
+        <input type="submit" value="Submit">
+        </form>
+    </p>
+    <p>The outside temperature in <span id="current-location"> </span> is currently <span id="current-weather"> </span> degrees</p>
+  </section>
+  <section>
     <h1 id="temperature"></h1>
-    <p>The current temperature is <span id="current-temp">20</span> degrees</p>
+    <p>The current indoor temperature is <span id="current-temp">20</span> degrees</p>
     <p>
       <button id="temperature-up">+</button>
       <button id="temperature-down">-</button>
